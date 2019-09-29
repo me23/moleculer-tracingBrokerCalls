@@ -2,14 +2,23 @@
   "name": "moleculer-tracingbrokercalls",
   "version": "1.0.0",
   "description": "Middleware for [moleculerjs](https://moleculer.services). It generates Tracing-Spans for each call made by the decorated broker.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "prepublish": "tsc",
   "scripts": {
-    "test": "jest --testMatch \"**/unit/**test.js\" --coverage"
+    "build": "tsc -p tsconfig.json",
+    "test": "jest --testMatch \"**/tests/**test.js\" --coverage"
+  },
+  "publishConfig": {
+    "registry": "http://192.168.100.230:4873/"
   },
   "author": "Matthias Endres",
   "license": "ISC",
   "devDependencies": {
     "jest": "^24.9.0",
+    "@types/jest": "^24.0.18",
+    "typescript": "^3.6.3",
     "moleculer": "moleculerjs/moleculer#next"
-  }
+  },
+  "dependencies": {}
 }
