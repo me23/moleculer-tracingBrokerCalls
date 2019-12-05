@@ -5,12 +5,17 @@ export default function tracingBrokerCalls(name: string = "no-service") {
 	return {
 		call(next: any) {
 			return function( this: ServiceBroker, actionName: string, params: any, opts: any ) {
-				const span: any = this.tracer.startSpan("calling: " + actionName, spanOptions );
-				opts = opts || {};
-				opts.parentSpan = span;
+				let span: any;
+				if( this.tracer ){
+					span = this.tracer.startSpan("calling: " + actionName, spanOptions );
+					opts = opts || {};
+					opts.parentSpan = span;
+				}
 				return next(actionName, params, opts)
 					.finally(() => {
-						span.finish();
+						if(span){
+							span.finish();
+						}
 				});
 			};
 		},
