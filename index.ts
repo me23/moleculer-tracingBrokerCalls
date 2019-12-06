@@ -6,7 +6,7 @@ export default function tracingBrokerCalls(name: string = "no-service") {
 		call(next: any) {
 			return function( this: ServiceBroker, actionName: string, params: any, opts: any ) {
 				let span: any;
-				if( this.tracer ){
+				if ( this.hasOwnProperty("tracer") && false !== this.tracer.isEnabled()  ){
 					span = this.tracer.startSpan("calling: " + actionName, spanOptions );
 					opts = opts || {};
 					opts.parentSpan = span;
