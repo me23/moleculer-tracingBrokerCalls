@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "rm -rf dist && tsc",
+    "upload-package": "npm run test && npm publish",
     "prepublishOnly": "rm -rf dist && tsc",
     "test": "npm run build && jest --config jest.config.js"
   },
