@@ -93,3 +93,4 @@ typings/
 .dynamodb/
 
 ./dist/**/*
+coverage
