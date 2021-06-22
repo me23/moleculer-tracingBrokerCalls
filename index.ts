@@ -17,7 +17,7 @@ export default function tracingBrokerCalls(name: string = "no-service") {
                     spanOpt.parentID = opts.parentCtx.span.id;
                     spanOpt.traceID = opts.parentCtx.span.traceID;
                     spanOpt.tracing = opts.parentCtx.span.sampled;
-                    //spanOpt.requestID = spanOpt.requestID || opts.parentCtx.span.requestID;
+                    spanOpt.requestID = spanOpt.requestID || opts.parentCtx.span.requestID;
                 } 
 
 				if ( this && this.hasOwnProperty("tracer") && false !== this.tracer.isEnabled()  ){

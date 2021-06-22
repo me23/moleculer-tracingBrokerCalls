@@ -56,7 +56,7 @@ describe("A broker call", () => {
 				}
 			}
 		});
-		return new Promise((resolve, reject) => {
+		return new Promise<void>((resolve, reject) => {
 			(sBroker.start() as Promise<any>)
 				.then(() => {
 					sBroker.call("service.ping").then((res: any) => {
