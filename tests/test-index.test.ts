@@ -28,7 +28,7 @@ describe("A broker call", () => {
 					sBroker.call("service.ping").then((res: any) => {
 						expect(res).toBe("pong");
 						expect(span).toBe(undefined);
-						resolve();
+						resolve(null);
 					});
 				})
 				.catch((err: any) => {
